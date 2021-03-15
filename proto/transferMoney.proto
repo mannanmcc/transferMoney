@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package="github.com/mannanmcc/transferMoney/proto";
+
+message Address {
+    string addressLine1 = 1;
+    string addressLine2 = 2;
+    string postCode = 3;
+}
+
+message AccountDetails {
+    string accountNumber = 1;
+    string currency = 2;
+}
+
+message Beneficiary {
+    Address address = 1;
+    AccountDetails accountDetails = 2;
+}
+
+message Client {
+    string accountNumber = 1;
+}
+
+message TransferMoneyRequest {
+    Client client = 1;
+    string Beneficiary = 2;
+    int32 amount = 3;
+}
+
+message TransferMoneyResponse {
+    float rate = 1;
+}
+
+service TransferService {
+    rpc TransferMoney(TransferMoneyRequest) returns (TransferMoneyResponse){};
+}

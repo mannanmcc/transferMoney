@@ -1,0 +1,1 @@
+protoc proto/transferMoney.proto --go_out=plugins=grpc:.
